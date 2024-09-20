@@ -16,8 +16,11 @@ export default function ChairBazaarHome() {
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const images = [
-    a,b,c,d
-     ];
+    "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_ai-generated-office-chair-on-transparent-background-ai_36396017.webp?alt=media&token=baaa4667-1bb5-4c73-adeb-d24c5ab2b9ae",
+    "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_ai-generated-office-chair-with-adjustable-features-and_41406856.webp?alt=media&token=f0e1b32b-43b0-4e95-818a-4a22f0607cb0",
+    "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_black-leather-office-chair-with-chrome-base_49575836.webp?alt=media&token=29f373bb-b3f4-4278-b936-4f1049d1cfc7",
+    "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_black-plastic-chair-isolated-on-transparent-background_44813147.webp?alt=media&token=488fb754-4102-4bb6-a36a-92fe34399b2c"
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,7 +62,7 @@ export default function ChairBazaarHome() {
 
     const loadImages = async () => {
       await Promise.all(imagePromises); // Wait for all images to load
-      // Wait for 2 seconds
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for 2 seconds
       setImagesLoaded(true); // Then set imagesLoaded to true
     };
 
