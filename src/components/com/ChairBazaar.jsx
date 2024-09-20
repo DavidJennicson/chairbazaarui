@@ -11,10 +11,24 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function ChairBazaarHome() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-
+const star = (
+  <svg
+    className="h-4 w-4"
+    width={51}
+    height={51}
+    viewBox="0 0 51 51"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z"
+      fill="currentColor"
+    />
+  </svg>
+);
   const images = [
-    "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_ai-generated-office-chair-on-transparent-background-ai_36396017.webp?alt=media&token=baaa4667-1bb5-4c73-adeb-d24c5ab2b9ae",
     "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_ai-generated-office-chair-with-adjustable-features-and_41406856.webp?alt=media&token=f0e1b32b-43b0-4e95-818a-4a22f0607cb0",
+      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_ai-generated-office-chair-with-adjustable-features-and_41406856.webp?alt=media&token=f0e1b32b-43b0-4e95-818a-4a22f0607cb0",
         ];
 
   const containerVariants = {
@@ -33,18 +47,21 @@ export default function ChairBazaarHome() {
   });
 
   const categories = [
-    { name: "Office Chairs", image: "/placeholder.svg?height=200&width=200" },
-    { name: "Dining Chairs", image: "/placeholder.svg?height=200&width=200" },
-    { name: "Lounge Chairs", image: "/placeholder.svg?height=200&width=200" },
-    { name: "Bar Stools", image: "/placeholder.svg?height=200&width=200" },
+    { name: "Office Chairs", image: "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/image.png?alt=media&token=51683b07-51ee-46e2-81c1-b0e17966c6b8" },
+    { name: "Executive Chairs", image: "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/Gemini_Generated_Image_3srwxk3srwxk3srw_processed.jpeg?alt=media&token=2c22c0b2-13a8-43fb-9b22-973898b4a73e" },
+    { name: "Gaming Chairs", image: "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/Gemini_Generated_Image_96jrgf96jrgf96jr_processed.jpeg?alt=media&token=16893b54-4144-4406-8049-5527be901f71" },
+    { name: "General Purpose Chairs", image: "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/Gemini_Generated_Image_xlvw9vxlvw9vxlvw_processed.jpeg?alt=media&token=8f747a9f-9d16-4561-8fa6-2843d13c9494" },
   ];
 
   const products = [
     { name: "Ergonomic Office Chair", category: "Office Chairs", price: 299.99, rating: 4.5, image: "/placeholder.svg?height=200&width=200" },
-    { name: "Modern Dining Chair", category: "Dining Chairs", price: 149.99, rating: 4.2, image: "/placeholder.svg?height=200&width=200" },
+    { name: "Modern Dining Chair", category: "Executive Chairs", price: 149.99, rating: 4.2, image: "/placeholder.svg?height=200&width=200" },
     { name: "Leather Lounge Chair", category: "Lounge Chairs", price: 499.99, rating: 4.8, image: "/placeholder.svg?height=200&width=200" },
     { name: "Adjustable Bar Stool", category: "Bar Stools", price: 129.99, rating: 4.0, image: "/placeholder.svg?height=200&width=200" },
   ];
+  const textAnimation = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0}};
 
   useEffect(() => {
     const imagePromises = images.map((src) => {
@@ -133,61 +150,56 @@ export default function ChairBazaarHome() {
 
       <main className="flex-1">
         {/* Hero Carousel */}
-        <section className="py-12">
-          <div className="container">
-            <div className="flex flex-col items-center space-y-6">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <motion.h1 
-                  initial={{ x: -50, opacity: 0 }} 
-                  animate={{ x: 0, opacity: 1 }} 
-                  transition={{ duration: 1 }} 
-                  className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl"
-                >
-                  Welcome to Chair Bazaar
-                </motion.h1>
-                <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                  Discover our exclusive range of chairs to fit every style and comfort need.
-                </p>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <a
-                    href="#"
-                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-                    prefetch={false}
-                  >
-                    Shop Now
-                  </a>
-                </div>
-              </div>
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-4"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                <motion.img
-                  key={0}
-                  src={images[0]} // Display the first image for mobile
-                  alt="Featured Chair"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center"
-                  width="550"
-                  height="550"
-                  variants={itemVariants('left')}
-                />
-                {images.slice(1).map((src, index) => (
-                  <motion.img
-                    key={index + 1}
-                    src={src}
-                    alt={`Image ${index + 1}`}
-                    className="hidden md:mx-auto md:block aspect-video overflow-hidden rounded-xl object-cover object-center"
-                    width="550"
-                    height="550"
-                    variants={itemVariants(index > 1 ? 'left' : 'right')}
-                  />
-                ))}
-              </motion.div>
-            </div>
-          </div>
-        </section>
+        <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
+  <motion.div
+    initial={{ x: "-100vw" }}
+    animate={{ x: 0 }}
+    transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+  >
+    <motion.h1
+      variants={textAnimation}
+      initial="hidden"
+      animate="visible"
+      transition={{ delay: 0.2, duration: 0.6 }}
+      className="scroll-m-20 pl-5 pr-5 text-4xl font-extrabold tracking-tight lg:text-5xl"
+    >
+      Chair Bazaar: Discover Comfort & Style
+    </motion.h1>
+
+    <motion.p
+      variants={textAnimation}
+      initial="hidden"
+      animate="visible"
+      transition={{ delay: 0.4, duration: 0.6 }}
+      className="mt-3 pl-5 pr-5 text-xl text-muted-foreground"
+    >
+      Explore a wide range of premium chairs designed to enhance your living spaces and work environments. Chair Bazaar offers comfort, elegance, and durability for every occasion.
+    </motion.p>
+
+    {/* Buttons */}
+    <div className="mt-7 pl-5 pr-5 grid gap-3 w-full sm:inline-flex">
+      <Button size={"lg"}>Shop Now</Button>
+      <Button variant={"outline"} size={"lg"}>
+        Contact Us
+      </Button>
+    </div>
+    {/* End Buttons */}
+  </motion.div>
+
+  {/* Col */}
+  <motion.div
+    className="relative ms-4"
+    initial={{ opacity: 0, x: "100vw" }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ type: "spring", stiffness: 30, duration: 0.7 }}
+  >
+    <img className="w-full rounded-md" src={images[1]} alt="Chair Image" />
+  </motion.div>
+  {/* End Col */}
+</div>
+
+      {/* End Hero */}
+    
 
         {/* Shop by Category */}
         <section className="py-12">
@@ -195,10 +207,10 @@ export default function ChairBazaarHome() {
             <h2 className="text-2xl font-bold text-center">Shop by Category</h2>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4 mt-6">
               {categories.map((category) => (
-                <Card key={category.name} className="flex flex-col items-center">
+                <Card key={category.name} className="flex flex-col items-center p-5">
                   <CardContent>
-                    <img src={category.image} alt={category.name} className="w-full h-32 object-cover rounded-md" />
-                    <h3 className="mt-2 text-lg font-semibold">{category.name}</h3>
+                    <img src={category.image} alt={category.name} className="w-full h-50 object-cover rounded-md" />
+                    <h3 className="mt-2 text-lg font-semibold text-center">{category.name}</h3>
                   </CardContent>
                 </Card>
               ))}
