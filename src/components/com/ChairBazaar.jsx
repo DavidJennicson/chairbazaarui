@@ -7,10 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
-import a from "../../assets/a.webp";
-import b from "../../assets/b.webp";
-import c from "../../assets/c.webp";
-import d from "../../assets/d.webp";
+
 export default function ChairBazaarHome() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -18,9 +15,7 @@ export default function ChairBazaarHome() {
   const images = [
     "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_ai-generated-office-chair-on-transparent-background-ai_36396017.webp?alt=media&token=baaa4667-1bb5-4c73-adeb-d24c5ab2b9ae",
     "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_ai-generated-office-chair-with-adjustable-features-and_41406856.webp?alt=media&token=f0e1b32b-43b0-4e95-818a-4a22f0607cb0",
-    "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_black-leather-office-chair-with-chrome-base_49575836.webp?alt=media&token=29f373bb-b3f4-4278-b936-4f1049d1cfc7",
-    "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/vecteezy_black-plastic-chair-isolated-on-transparent-background_44813147.webp?alt=media&token=488fb754-4102-4bb6-a36a-92fe34399b2c"
-  ];
+        ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -61,9 +56,9 @@ export default function ChairBazaarHome() {
     });
 
     const loadImages = async () => {
-      await Promise.all(imagePromises); // Wait for all images to load
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for 2 seconds
-      setImagesLoaded(true); // Then set imagesLoaded to true
+      await Promise.all(imagePromises);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setImagesLoaded(true);
     };
 
     loadImages();
@@ -138,9 +133,8 @@ export default function ChairBazaarHome() {
 
       <main className="flex-1">
         {/* Hero Carousel */}
-        <section className="py-12 ">
-         
-        <div className="container">
+        <section className="py-12">
+          <div className="container">
             <div className="flex flex-col items-center space-y-6">
               <div className="flex flex-col items-center text-center space-y-4">
                 <motion.h1 
@@ -149,10 +143,10 @@ export default function ChairBazaarHome() {
                   transition={{ duration: 1 }} 
                   className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl"
                 >
-                  The Ultimate Ecommerce Platform
+                  Welcome to Chair Bazaar
                 </motion.h1>
                 <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                  Explore the best products and make your online shopping experience seamless.
+                  Discover our exclusive range of chairs to fit every style and comfort need.
                 </p>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <a
@@ -165,17 +159,26 @@ export default function ChairBazaarHome() {
                 </div>
               </div>
               <motion.div
-                className="grid grid-cols-2 gap-4 md:grid-cols-4"
+                className="grid grid-cols-1 md:grid-cols-2 gap-4"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
               >
-                {images.map((src, index) => (
+                <motion.img
+                  key={0}
+                  src={images[0]} // Display the first image for mobile
+                  alt="Featured Chair"
+                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center"
+                  width="550"
+                  height="550"
+                  variants={itemVariants('left')}
+                />
+                {images.slice(1).map((src, index) => (
                   <motion.img
-                    key={index}
+                    key={index + 1}
                     src={src}
                     alt={`Image ${index + 1}`}
-                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center"
+                    className="hidden md:mx-auto md:block aspect-video overflow-hidden rounded-xl object-cover object-center"
                     width="550"
                     height="550"
                     variants={itemVariants(index > 1 ? 'left' : 'right')}
@@ -187,15 +190,15 @@ export default function ChairBazaarHome() {
         </section>
 
         {/* Shop by Category */}
-        <section className="py-12 bg-muted">
+        <section className="py-12">
           <div className="container">
-            <h2 className="text-3xl font-bold text-center mb-8">Shop by Category</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {categories.map((category, index) => (
-                <Card key={index} className="cursor-pointer hover:shadow-lg transition-shadow">
-                  <CardContent className="p-4">
-                    <img src={category.image} alt={category.name} className="w-full h-40 object-cover mb-4 rounded" />
-                    <h3 className="text-lg font-semibold text-center">{category.name}</h3>
+            <h2 className="text-2xl font-bold text-center">Shop by Category</h2>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 mt-6">
+              {categories.map((category) => (
+                <Card key={category.name} className="flex flex-col items-center">
+                  <CardContent>
+                    <img src={category.image} alt={category.name} className="w-full h-32 object-cover rounded-md" />
+                    <h3 className="mt-2 text-lg font-semibold">{category.name}</h3>
                   </CardContent>
                 </Card>
               ))}
@@ -206,25 +209,18 @@ export default function ChairBazaarHome() {
         {/* Product Cards */}
         <section className="py-12">
           <div className="container">
-            <h2 className="text-3xl font-bold text-center mb-8">Featured Products</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products.map((product, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <CardContent className="p-4">
-                    <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded" />
-                    <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-                    <p className="text-muted-foreground mb-2">{product.category}</p>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-lg font-bold">${product.price.toFixed(2)}</span>
-                      <div className="flex items-center">
-                        <Star className="w-4 h-4 fill-primary text-primary mr-1" />
-                        <span>{product.rating}</span>
-                      </div>
+            <h2 className="text-2xl font-bold text-center">Featured Products</h2>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 mt-6">
+              {products.map((product) => (
+                <Card key={product.name} className="flex flex-col items-center">
+                  <CardContent>
+                    <img src={product.image} alt={product.name} className="w-full h-32 object-cover rounded-md" />
+                    <h3 className="mt-2 text-lg font-semibold">{product.name}</h3>
+                    <p className="mt-1 text-gray-500">${product.price.toFixed(2)}</p>
+                    <div className="mt-1 flex items-center">
+                      <Star className="h-4 w-4 text-yellow-500" />
+                      <span className="ml-1 text-sm">{product.rating}</span>
                     </div>
-                    <Button className="w-full" variant="outline">
-                      See Variants
-                      <ChevronDown className="w-4 h-4 ml-2" />
-                    </Button>
                   </CardContent>
                 </Card>
               ))}
@@ -234,32 +230,9 @@ export default function ChairBazaarHome() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-muted py-12">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">About Chair Bazaar</h3>
-              <p className="text-muted-foreground">We offer a wide selection of high-quality chairs for every need and style.</p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-muted-foreground hover:text-foreground">Home</a></li>
-                <li><a href="/shop" className="text-muted-foreground hover:text-foreground">Shop</a></li>
-                <li><a href="/about" className="text-muted-foreground hover:text-foreground">About</a></li>
-                <li><a href="/contact" className="text-muted-foreground hover:text-foreground">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-              <p className="text-muted-foreground">123 Chair Street, Furniture City, FC 12345</p>
-              <p className="text-muted-foreground">Email: info@chairbazaar.com</p>
-              <p className="text-muted-foreground">Phone: (123) 456-7890</p>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-muted-foreground/20 text-center text-muted-foreground">
-            <p>&copy; 2023 Chair Bazaar. All rights reserved.</p>
-          </div>
+      <footer className="py-6">
+        <div className="container text-center">
+          <p className="text-sm text-gray-500">© 2024 Chair Bazaar. All rights reserved.</p>
         </div>
       </footer>
     </div>
