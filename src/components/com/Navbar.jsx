@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import { Button } from '../ui/button';
-import { Menu, MenuIcon, ShoppingBagIcon, ShoppingCart, UserIcon } from 'lucide-react';
-import {useNavigate} from 'react-router-dom'
+import { Menu, MenuIcon, ShoppingBagIcon, UserIcon } from 'lucide-react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+
 function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  var nav=useNavigate();
+
   return (
     <>
-         <header className="sticky top-0 z-10 bg-background bg-opacity-90 backdrop-blur-md shadow-sm">
+      <header className="sticky top-0 z-10 bg-background bg-opacity-90 backdrop-blur-md shadow-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-semibold text-primary">ChairBazaar</h1>
           <nav className="hidden md:flex space-x-6">
             {['Shop', 'ProductDetail', 'Checkout'].map((item) => (
-              <a key={item} href={item} onClick={nav('/'+item)} className="text-foreground hover:text-primary transition-colors">{item}</a>
+              <Link key={item} to={`/${item}`} className="text-foreground hover:text-primary transition-colors">
+                {item}
+              </Link>
             ))}
           </nav>
           <div className="hidden md:flex space-x-4">
@@ -30,7 +33,9 @@ function Navbar() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <nav className="flex flex-col space-y-4 mt-8">
                 {['Shop', 'About', 'Contact'].map((item) => (
-                  <a key={item} href="#" className="text-lg text-foreground hover:text-primary transition-colors">{item}</a>
+                  <Link key={item} to={`/${item}`} className="text-lg text-foreground hover:text-primary transition-colors">
+                    {item}
+                  </Link>
                 ))}
               </nav>
               <div className="flex space-x-4 mt-8">
@@ -41,7 +46,6 @@ function Navbar() {
           </Sheet>
         </div>
       </header>
-
     </>
   );
 }
