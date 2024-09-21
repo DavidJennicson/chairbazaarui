@@ -32,7 +32,7 @@ function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <nav className="flex flex-col space-y-4 mt-8">
-                {['Shop', 'About', 'Contact'].map((item) => (
+                {['Shop', 'ProductDetail', 'Checkout'].map((item) => (
                   <Link key={item} to={`/${item}`} className="text-lg text-foreground hover:text-primary transition-colors">
                     {item}
                   </Link>
