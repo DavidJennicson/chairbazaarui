@@ -193,6 +193,13 @@ export default function CheckoutPage() {
           </Card>
         </div>
       </div>
+      <footer className="bg-muted py-6 text-center text-sm text-muted-foreground">
+      <div className="container mx-auto px-4">
+        <p>&copy; 2024 Chair Bazaar. All rights reserved.</p>
+        <p>Developed for UI Design</p>
+        <p>Developed by DH</p>
+      </div>
+    </footer>
     </div>
   )
 }

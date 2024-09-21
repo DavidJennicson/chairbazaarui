@@ -6,219 +6,8 @@ import { Button } from "../ui/button";
 import { Slider } from "../ui/slider";
 import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from "../ui/drawer";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-const productData = [
-  {
-    "productName": "Ergonomic Office Chair",
-    "price": "$299.99",
-    "description": "Experience ultimate comfort with our ergonomic office chair, designed to support your body during long work hours.",
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/011.jpeg?alt=media&token=b3be88f2-5b51-4bab-9eb4-3bf6e0734e73",
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/012.jpeg?alt=media&token=05e4e32c-8b2e-4870-916f-a3cbdffa840c"
-    ],
-    "features": [
-      "Ergonomic design for optimal comfort",
-      "High-quality materials ensure durability"
-    ],
-    "relatedProducts": [
-      { "name": "Executive Office Chair", "price": "$249.99", "image": "/placeholder.svg?height=200&width=200" }
-    ],
-    "reviews": [
-      { "author": "John D.", "rating": 5, "comment": "Excellent chair, very comfortable for long work hours." }
-    ],
-    "ratingCount": 128,
-    "category": "Office Chairs"
-  },
-  {
-    "productName": "Mesh Office Chair",
-    "price": "$199.99",
-    "description": "Stay cool and comfortable with our breathable mesh office chair, perfect for long hours at your desk.",
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/021.jpeg?alt=media&token=example1",
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/022.jpeg?alt=media&token=example2"
-    ],
-    "features": [
-      "Breathable mesh back for ventilation",
-      "Adjustable height and tilt"
-    ],
-    "relatedProducts": [
-      { "name": "Leather Executive Chair", "price": "$299.99", "image": "/placeholder.svg?height=200&width=200" }
-    ],
-    "reviews": [
-      { "author": "Alice B.", "rating": 4, "comment": "Great chair for the price!" }
-    ],
-    "ratingCount": 75,
-    "category": "Office Chairs"
-  },
-  {
-    "productName": "Gaming Chair",
-    "price": "$349.99",
-    "description": "Designed for gamers, this chair offers maximum comfort and style for long gaming sessions.",
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/031.jpeg?alt=media&token=example3",
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/032.jpeg?alt=media&token=example4"
-    ],
-    "features": [
-      "Adjustable armrests and lumbar support",
-      "Sleek racing-style design"
-    ],
-    "relatedProducts": [
-      { "name": "Footrest Stool", "price": "$49.99", "image": "/placeholder.svg?height=200&width=200" }
-    ],
-    "reviews": [
-      { "author": "Mark S.", "rating": 5, "comment": "Perfect for long gaming sessions!" }
-    ],
-    "ratingCount": 150,
-    "category": "Office Chairs"
-  },
-  {
-    "productName": "Reclining Lounge Chair",
-    "price": "$399.99",
-    "description": "Relax in style with our reclining lounge chair, perfect for your living room or study.",
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/041.jpeg?alt=media&token=example5",
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/042.jpeg?alt=media&token=example6"
-    ],
-    "features": [
-      "Reclining function for ultimate relaxation",
-      "Soft upholstery for added comfort"
-    ],
-    "relatedProducts": [
-      { "name": "Ottoman", "price": "$79.99", "image": "/placeholder.svg?height=200&width=200" }
-    ],
-    "reviews": [
-      { "author": "Emma T.", "rating": 4, "comment": "Very comfortable, but takes up a bit of space." }
-    ],
-    "ratingCount": 60,
-    "category": "Living Room"
-  },
-  {
-    "productName": "Height Adjustable Desk Chair",
-    "price": "$249.99",
-    "description": "This chair adjusts to fit any desk height, ensuring a comfortable working position.",
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/051.jpeg?alt=media&token=example7",
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/052.jpeg?alt=media&token=example8"
-    ],
-    "features": [
-      "Height adjustable for versatility",
-      "Stylish design fits any workspace"
-    ],
-    "relatedProducts": [
-      { "name": "Standing Desk", "price": "$399.99", "image": "/placeholder.svg?height=200&width=200" }
-    ],
-    "reviews": [
-      { "author": "Tom R.", "rating": 5, "comment": "Great chair for my adjustable desk!" }
-    ],
-    "ratingCount": 80,
-    "category": "Office Chairs"
-  },
-  {
-    "productName": "Kids Study Chair",
-    "price": "$89.99",
-    "description": "A fun and colorful chair designed for kids, perfect for homework or playtime.",
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/061.jpeg?alt=media&token=example9",
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/062.jpeg?alt=media&token=example10"
-    ],
-    "features": [
-      "Colorful design to brighten any room",
-      "Durable construction for kids"
-    ],
-    "relatedProducts": [
-      { "name": "Kids Desk", "price": "$129.99", "image": "/placeholder.svg?height=200&width=200" }
-    ],
-    "reviews": [
-      { "author": "Lucy K.", "rating": 4, "comment": "My daughter loves this chair!" }
-    ],
-    "ratingCount": 45,
-    "category": "Kids"
-  },
-  {
-    "productName": "Rocking Chair",
-    "price": "$179.99",
-    "description": "Enjoy a classic rocking chair experience, perfect for relaxation or reading.",
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/071.jpeg?alt=media&token=example11",
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/072.jpeg?alt=media&token=example12"
-    ],
-    "features": [
-      "Classic design for timeless appeal",
-      "Sturdy construction for durability"
-    ],
-    "relatedProducts": [
-      { "name": "Throw Blanket", "price": "$29.99", "image": "/placeholder.svg?height=200&width=200" }
-    ],
-    "reviews": [
-      { "author": "Nancy P.", "rating": 5, "comment": "So relaxing, perfect for my reading nook!" }
-    ],
-    "ratingCount": 90,
-    "category": "Living Room"
-  },
-  {
-    "productName": "Bar Stool",
-    "price": "$99.99",
-    "description": "Stylish bar stool with a modern design, perfect for kitchen islands or home bars.",
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/081.jpeg?alt=media&token=example13",
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/082.jpeg?alt=media&token=example14"
-    ],
-    "features": [
-      "Modern design fits any decor",
-      "Comfortable footrest for relaxation"
-    ],
-    "relatedProducts": [
-      { "name": "Counter Height Table", "price": "$249.99", "image": "/placeholder.svg?height=200&width=200" }
-    ],
-    "reviews": [
-      { "author": "Kevin L.", "rating": 4, "comment": "Very sturdy and stylish!" }
-    ],
-    "ratingCount": 50,
-    "category": "Dining Chairs"
-  },
-  {
-    "productName": "Adjustable Drafting Chair",
-    "price": "$159.99",
-    "description": "Perfect for artists and architects, this chair offers height adjustability and comfort.",
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/091.jpeg?alt=media&token=example15",
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/092.jpeg?alt=media&token=example16"
-    ],
-    "features": [
-      "Height adjustable for various tasks",
-      "360-degree swivel base for flexibility"
-    ],
-    "relatedProducts": [
-      { "name": "Drawing Table", "price": "$199.99", "image": "/placeholder.svg?height=200&width=200" }
-    ],
-    "reviews": [
-      { "author": "Sarah W.", "rating": 5, "comment": "Great for my home studio!" }
-    ],
-    "ratingCount": 30,
-    "category": "Office Chairs"
-  },
-  {
-    "productName": "Outdoor Patio Chair",
-    "price": "$129.99",
-    "description": "Stylish and durable chair designed for outdoor use, perfect for patios or gardens.",
-    "images": [
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/101.jpeg?alt=media&token=example17",
-      "https://firebasestorage.googleapis.com/v0/b/chairbazaar-710bd.appspot.com/o/102.jpeg?alt=media&token=example18"
-    ],
-    "features": [
-      "Weather-resistant materials",
-      "Stylish design for outdoor decor"
-    ],
-    "relatedProducts": [
-      { "name": "Patio Table", "price": "$199.99", "image": "/placeholder.svg?height=200&width=200" }
-    ],
-    "reviews": [
-      { "author": "Jake H.", "rating": 4, "comment": "Perfect for my backyard!" }
-    ],
-    "ratingCount": 40,
-    "category": "Outdoor"
-  }
-];
-
+import productData from './productData.json'; // Adjust the path as necessary
+import {useNavigate} from 'react-router-dom';
 export default function ProductPage() {
   const [selectedFilters, setSelectedFilters] = useState({
     category: [],
@@ -310,17 +99,7 @@ export default function ProductPage() {
             </select>
 
             {/* Rating Filter */}
-            <h3 className="font-semibold mb-2">Rating</h3>
-            <select
-              className="w-full p-2 border rounded"
-              onChange={(e) => handleFilterChange("rating", e.target.value)}
-            >
-              <option value="all">All Ratings</option>
-              <option value="5">5 Stars</option>
-              <option value="4">4 Stars</option>
-              <option value="3">3 Stars</option>
-            </select>
-
+      
             {/* Price Range Slider */}
             <h3 className="font-semibold mb-2">Price Range</h3>
             <Slider
@@ -350,16 +129,25 @@ export default function ProductPage() {
 
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product, index) => (
-              <motion.div key={index} whileHover={{ scale: 1.05 }} className="p-4 border rounded-lg shadow-sm">
+<a href={"/products/"+product.id}>
+<motion.div  key={index} whileHover={{ scale: 1.05 }} className="p-4 border rounded-lg shadow-sm">
                 <img src={product.images[0]} alt={product.productName} className="rounded-lg" />
                 <h3 className="mt-4 font-bold">{product.productName}</h3>
                 <p>{product.price}</p>
                 <Button variant="outline" className="mt-2">Add to Cart</Button>
               </motion.div>
+</a>
             ))}
           </motion.div>
         </section>
       </main>
+      <footer className="bg-muted py-6 text-center text-sm text-muted-foreground">
+      <div className="container mx-auto px-4">
+        <p>&copy; 2024 Chair Bazaar. All rights reserved.</p>
+        <p>Developed for UI Design</p>
+        <p>Developed by DH</p>
+      </div>
+    </footer>
     </div>
   );
 }
